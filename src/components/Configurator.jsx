@@ -55,7 +55,7 @@ const Configurator = () => {
                 <div className='configurator__section__title'>
                     Select Vehicle Wrap
                 </div>
-                <div style={{ width: 'auto' }}>
+                <div style={{ marginLeft: '20px' }}>
                     <Select
                         value={options.find(option => option.value === overlay)}
                         options={options}
