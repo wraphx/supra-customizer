@@ -11,11 +11,11 @@ export default function App() {
   return (
 
     <CustomizationProvider>
-       <Configurator />
+      
       <div className="App">
       <Loader />
         <Canvas shadows camera={{ position: [0, 0, 20], fov:50 }}>
-          <color attach="background" args={['#15151a']} />
+          <color attach="background" args={['grey']} />
           <Suspense fallback={null}>
           <Supra scale={0.7} position={[0, -1.1, 0]} />
           </Suspense>
@@ -52,7 +52,7 @@ export default function App() {
           {/* <OrbitControls minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} enableZoom={true} enablePan={false} /> */}
           <OrbitControls autoRotate enablePan={false} enableZoom={true} minPolarAngle={Math.PI / 2.2} maxPolarAngle={Math.PI / 2.2} />
         </Canvas>
-       
+        <Configurator />
       </div>
 
     </CustomizationProvider>

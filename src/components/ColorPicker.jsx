@@ -1,34 +1,40 @@
 import React from 'react';
-import { HexColorPicker } from 'react-colorful';
+import { SliderPicker } from 'react-color';
 import { proxy, useSnapshot } from 'valtio';
 
 export const state = proxy({
-    base: { BaseMtl: "#FFFFFF" }, // Initialize base color to white
+    base: { BaseMtl: "#ffffff" }, // Initialize BaseMtl color
 });
 
 const ColorPicker = () => {
     const snap = useSnapshot(state);
 
-    const handleColorChange = (color) => {
-        state.base.BaseMtl = color; // Update the base color in the state
-    };
-
     const resetColor = () => {
-        state.base.BaseMtl = "#FFFFFF"; // Reset the base color to white
+        state.base.BaseMtl = '#ffffff'; // Reset the BaseMtl color
     };
-
-    let color = state.base.BaseMtl;
 
     return (
-        <div style={{ padding: '8px' }}>
-            <HexColorPicker
-                color={snap.base.BaseMtl}
-                onChange={handleColorChange}
-            />
+        <div>
+            
             <div className='current-color'>
-                Current color is {color}
+                <span>Change Color:    </span>
+                
+                <input 
+                    type="color" 
+                    id="colorpicker" 
+                    value={snap.base.BaseMtl} // Use the current color
+                    onChange={(e) => (state.base.BaseMtl = e.target.value)} // Update the color on change
+                />
+                {snap.base.BaseMtl}
+
+                <button className='button'  onClick={resetColor}>Reset Original Color</button>
             </div>
-            <button className='button' onClick={resetColor}>Reset Original Color</button>
+            
+            <div className='color-hex'>
+                    
+                    
+                </div>
+            
         </div>
     );
 };
